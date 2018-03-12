@@ -1059,6 +1059,7 @@ $(document).ready(function(){
         if (rt == 0) head += "<th class=sub width=45>CLASS</th>";
         head += "<th class=sub width=70>ACTIVITY</th>";
         head += "<th class=sub>LAST EVENT</th>";
+        head += "<th class=sub witdh=160>SENSOR</th>";
         head += "<th class=sub width=110>SOURCE</th>";
         head += "<th class=sub width=40>AGE</th>";
         head += "<th class=sub width=160>COUNTRY</th>";
@@ -1077,6 +1078,7 @@ $(document).ready(function(){
           var src_ip    = theData[i].src_ip  || "-";
           var dst_ip    = theData[i].dst_ip  || "-";
           var max_time  = theData[i].maxTime || "-";
+          var sensor    = theData[i].sensor  || "-";
           var src_clong = theData[i].src_cc  || "unknown";
           var src_cc    = theData[i].srcc    || "-";
           var dst_clong = theData[i].dst_cc  || "unknown";
@@ -1168,6 +1170,7 @@ $(document).ready(function(){
           if (rt == 0) row += "<td class=sub>" + catCells + "</td>";
           row += "<td class=sub>" + cells + "</td>";
           row += "<td class=\"sub timestamp\">" + max_time + "</td>";
+          row += "<td class=\"sub sensor\">" + sensor + "</td>"
           row += "<td class=\"sub sub_filter select src\" data-sord=src data-type=ip data-col=" + scolour + "><div class=object style=\"background-color:#" + scolour + ";\"></div>" + src_ip + "</td>";
           row += "<td class=sub style=\"color:" + sa_col + ";\" title=\"" + src_age + "\">" + src_age_n + "</td>";
           row += "<td class=\"sub " + cs[0] + "\" data-type=cc data-value=" + src_cc + ">";

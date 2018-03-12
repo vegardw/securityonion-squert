@@ -342,6 +342,7 @@ function level1() {
   // build statement
   $statement = "SELECT COUNT(event.signature) AS count,
     MAX(CONVERT_TZ(event.timestamp,'+00:00', :maxoffset)) AS maxTime,
+    sensor.hostname AS sensor,
     INET_NTOA(event.src_ip) AS src_ip,
     msrc.c_long AS src_cc,
     INET_NTOA(event.dst_ip) AS dst_ip,
@@ -367,6 +368,7 @@ function level1() {
     LEFT JOIN object_mappings AS odst ON event.dst_ip = odst.object AND odst.type = 'ip_c'
     LEFT JOIN object_mappings AS src_tag ON event.src_ip = src_tag.object AND src_tag.type = 'tag'
     LEFT JOIN object_mappings AS dst_tag ON event.dst_ip = dst_tag.object AND dst_tag.type = 'tag'
+    LEFT JOIN sensor ON event.sid = sensor.sid
     $qp2
     GROUP BY event.src_ip, event.dst_ip
     ORDER BY maxTime $sv";
